@@ -1,0 +1,1 @@
+news app is an app that displays news content from an api
