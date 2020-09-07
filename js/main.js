@@ -1,7 +1,6 @@
 var input = document.getElementById('input')
 
 
-
 input.addEventListener('blur', () => {
 
     fetch("https://saurav.tech/NewsAPI/top-headlines/category/" + input.value + "/us.json")
@@ -11,25 +10,26 @@ input.addEventListener('blur', () => {
         .then((data) => {
             console.log(data.articles);
             var output = data.articles;
-            output.forEach(function(item) {
+            output.forEach(function(output) {
 
                 document.getElementById("container").innerHTML += `
-            <div class="col-lg-3 p-3 m-5 card">
-            <a src="${item.url}">
-            <div class="card-content">
+                    <div class="col-lg-3 p-3 m-4 card">
+                    <a src="${output.url}">
+                    <div class="card-content">
 
-            <img src="${item.urlToImage}">
-            <h3>${item.title}</h3>
+                    <img src="${output.urlToImage}">
+                    <h3>${output.title}</h3>
 
-            <p>${item.description}</p>   
-            <div class="d-flex">      
-            <p class="p-3">Author: ${item.author}</p>
-            <p class="p-3">${item.source.name}</p>
-            </div>
-            </div>
-            </a>
-            </div>
-            `;
+                    <p>${output.description}</p>   
+                    <div class="d-flex">      
+                    <p class="p-3">Author: ${output.author}</p>
+                    <p class="p-3">${output.source.name}</p>
+                    </div>
+                    </div>
+                    </a>
+                    </div>
+                `;
             });
         });
+    document.getElementById("container").innerHTML = '';
 })
